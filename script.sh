@@ -37,6 +37,9 @@ find "$src_path" -type f -name "*.$extension" > "$backup_path/backup.conf"
 # Create a timestamp
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
+# Having a log file
+log_file="$backup_path/backup.log"
+
 # Create a temp directory to copy files into
 temp_dir="$backup_path/backup_$timestamp"
 mkdir -p "$temp_dir"
@@ -56,11 +59,22 @@ fi
 # Remove the temporary directory
 rm -rf "$temp_dir"
 
+# Calculating the size of the backup file
+if [ -f "$backup_path/backup_$timestamp.tar.gz" ]; then
+	size=$(du -h "$backup_path/backup_$timestamp.tar.gz" | cut -f1)
+else
+	size="0B"
+fi
+
 # Capture the end time of the execution
 #end_time=$(date +%s)
 end_time=$(date +%s%3N)
 # Calculate the execution's time
 duration=$((end_time - start_time))
 
+# logging
+echo "[$(date +"%Y-%m-%d %H:%M:%S")] Backup: $result | Size: $size | Duration: ${duration}s" >> "$log_file"
+
 #echo "$result in $duration seconds"
 echo "$result in $duration ms"
+
