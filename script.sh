@@ -28,6 +28,5 @@ fi
 # Check if the backup path exists
 
 if [ ! -d "$backup_path" ]; then
-	echo "[!] Backup path does not exist."
-	exit 3
+	mkdir -p "$backup_path"
 fi
