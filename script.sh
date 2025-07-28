@@ -29,3 +29,7 @@ fi
 
 # Find matching files and write full paths info backup.conf in the provided backup path
 find "$src_path" -type f -name "*.$extension" > "$backup_path/backup.conf"
+
+# Create a timestamp
+timestamp=$(date + "%Y-%m-%d_%H-%M-%S")
+echo "timestamp: $timestamp"
