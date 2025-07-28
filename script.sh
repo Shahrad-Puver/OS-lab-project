@@ -32,4 +32,12 @@ find "$src_path" -type f -name "*.$extension" > "$backup_path/backup.conf"
 
 # Create a timestamp
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
-echo "timestamp: $timestamp"
+
+# Create a temp directory to copy files into
+temp_dir="$backup_path/backup_$timestamp"
+mkdir -p "$temp_dir"
+
+# Copy each file listed in backup.conf into the temp dir
+while IFS= read -r file; do
+	cp --parents "$file" "$temp_dir"
+done < "$backup_path/backup.conf"
