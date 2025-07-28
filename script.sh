@@ -30,3 +30,4 @@ fi
 if [ ! -d "$backup_path" ]; then
 	echo "[!] Backup path does not exist."
 	exit 3
+fi
