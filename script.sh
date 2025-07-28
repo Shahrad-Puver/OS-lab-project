@@ -3,6 +3,9 @@
 # OS lab project
 # by Shahrad-Puver (Shahrad Gazni)
 
+# Capture the execution's start time
+start_time=$(date +%s)
+
 # Check for required arguments
 # We require the user to give the script 3 arguments at the time of execution;
 # If the number of received arguments is less than than, the script should abort.
@@ -52,4 +55,9 @@ fi
 # Remove the temporary directory
 rm -rf "$temp_dir"
 
-echo "$result"
+# Capture the end time of the execution
+end_time=$(date +%s)
+# Calculate the execution's time
+duration=$((end_time - start_time))
+
+echo "$result in $duration seconds"
