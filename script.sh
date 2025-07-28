@@ -43,9 +43,13 @@ while IFS= read -r file; do
 done < "$backup_path/backup.conf"
 
 # Create a tar.gz archive of the backup
-tar -czf "$backup_path/backup_$timestamp.tar.gz" -C "$temp_dir" .
+if tar -czf "$backup_path/backup_$timestamp.tar.gz" -C "$temp_dir" .; then
+	result="[+] Success"
+else
+	result="[-] Failed"
+fi
 
 # Remove the temporary directory
 rm -rf "$temp_dir"
 
-echo "Done"
+echo "$result"
