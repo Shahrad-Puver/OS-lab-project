@@ -68,7 +68,7 @@ fi
 
 # Deleting older backup files
 # Older than 1 minute: (for test-purposes)
-find "$backup_path" -type f -name "backup_*.tar.gz" -mmin +1 -exec rm {} \;
+#find "$backup_path" -type f -name "backup_*.tar.gz" -mmin +1 -exec rm {} \;
 # Older than 7 days (applicable practical purposes):
 find "$backup_path" -type f -name "backup_*.tar.gz" -mtime +7 -exec rm {} \;
 
