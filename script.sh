@@ -41,3 +41,8 @@ mkdir -p "$temp_dir"
 while IFS= read -r file; do
 	cp --parents "$file" "$temp_dir"
 done < "$backup_path/backup.conf"
+
+# Create a tar.gz archive of the backup
+tar -czf "$backup_path/backup_$timestamp.tar.gz" -C "$temp_dir" .
+
+
