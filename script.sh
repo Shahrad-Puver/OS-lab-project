@@ -4,7 +4,8 @@
 # by Shahrad-Puver (Shahrad Gazni)
 
 # Capture the execution's start time
-start_time=$(date +%s)
+#start_time=$(date +%s)
+start_time=$(date +%s%3N)
 
 # Check for required arguments
 # We require the user to give the script 3 arguments at the time of execution;
@@ -56,8 +57,10 @@ fi
 rm -rf "$temp_dir"
 
 # Capture the end time of the execution
-end_time=$(date +%s)
+#end_time=$(date +%s)
+end_time=$(date +%s%3N)
 # Calculate the execution's time
 duration=$((end_time - start_time))
 
-echo "$result in $duration seconds"
+#echo "$result in $duration seconds"
+echo "$result in $duration ms"
