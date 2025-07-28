@@ -48,3 +48,4 @@ tar -czf "$backup_path/backup_$timestamp.tar.gz" -C "$temp_dir" .
 # Remove the temporary directory
 rm -rf "$temp_dir"
 
+echo "Done"
