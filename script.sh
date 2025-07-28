@@ -24,3 +24,9 @@ if [ ! -d "$src_path" ]; then
 	echo "[!] Source path does not exist."
 	exit 2
 fi
+
+# Check if the backup path exists
+
+if [ ! -d "$backup_path" ]; then
+	echo "[!] Backup path does not exist."
+	exit 3
