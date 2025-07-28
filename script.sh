@@ -66,6 +66,12 @@ else
 	size="0B"
 fi
 
+# Deleting older backup files
+# Older than 1 minute: (for test-purposes)
+find "$backup_path" -type f -name "backup_*.tar.gz" -mmin +1 -exec rm {} \;
+# Older than 7 days (applicable practical purposes):
+find "$backup_path" -type f -name "backup_*.tar.gz" -mtime +7 -exec rm {} \;
+
 # Capture the end time of the execution
 #end_time=$(date +%s)
 end_time=$(date +%s%3N)
